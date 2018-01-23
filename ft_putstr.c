@@ -6,13 +6,13 @@
 /*   By: eduprat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 14:25:52 by eduprat           #+#    #+#             */
-/*   Updated: 2017/12/10 15:07:27 by eduprat          ###   ########.fr       */
+/*   Updated: 2018/01/14 14:00:37 by eduprat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putstr(char const *s)
+void	ft_putstr(char const *s)
 {
 	write(1, s, ft_strlen(s));
 }

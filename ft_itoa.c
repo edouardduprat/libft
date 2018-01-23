@@ -1,31 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eduprat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/18 19:36:59 by eduprat           #+#    #+#             */
-/*   Updated: 2018/01/14 14:16:51 by eduprat          ###   ########.fr       */
+/*   Created: 2018/01/18 15:02:10 by eduprat           #+#    #+#             */
+/*   Updated: 2018/01/21 17:57:06 by eduprat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+static size_t	get_str_len(int n)
 {
 	size_t	i;
 
-	i = 0;
-	while (i < n)
-	{
-		if (((unsigned char *)src)[i] == (unsigned char)c)
-		{
-			((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
-			return (&(dst[i + 1]));
-		}
-		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+	i = 1;
+	while (n /= 10)
 		i++;
+	return (i);
+}
+
+char	*ft_itoa(int n)
+{
+	char			*str;
+	size_t			str_len;
+	unsigned int	copy_n;
+
+	str_len = get_str_len(n);
+	copy_n = n;
+	if (n < 0)
+	{
+		copy_n = -n;
+		str_len++;
 	}
-	return (NULL);
+	if (!(str = ft_strnew(str_len)))
+		return (NULL);
+	str[--str_len] = copy_n % 10 + '0';
+	while (copy_n /= 10)
+		str[--str_len] = copy_n % 10 + '0';
+	if (n < 0)
+		*(str + 0) = '-';
+	return (str);
 }
