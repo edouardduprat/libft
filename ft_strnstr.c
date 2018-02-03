@@ -6,7 +6,7 @@
 /*   By: eduprat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 16:01:14 by eduprat           #+#    #+#             */
-/*   Updated: 2018/01/21 17:27:51 by eduprat          ###   ########.fr       */
+/*   Updated: 2018/01/22 17:46:50 by eduprat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	while (big[index] && index <= len)
 	{
 		next = 0;
-		while (big[index + next] == little[next] && 
+		while (big[index + next] == little[next] &&
 				little[next] && index + next < len)
 			next++;
 		if (next == little_length)

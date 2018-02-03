@@ -1,18 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_word_count.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eduprat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/10 14:24:07 by eduprat           #+#    #+#             */
-/*   Updated: 2018/01/27 13:31:11 by eduprat          ###   ########.fr       */
+/*   Created: 2018/01/31 12:21:35 by eduprat           #+#    #+#             */
+/*   Updated: 2018/01/31 13:01:18 by eduprat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+int		ft_word_count(char *str)
 {
-	write(fd, &c, 1);
+	int		index;
+	int		word;
+	int		count;
+
+	index = 0;
+	word = 1;
+	count = 1;
+	while (str[index] != '\0')
+	{
+		if (str[index] != ' ' && str[index] != '\t'
+				&& str[index] != '\n')
+			word = 1;
+		else if (word == 1)
+		{
+			count += 1;
+			word = 0;
+		}
+		index++;
+	}
+	return (count);
 }

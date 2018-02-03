@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_is_white_space.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eduprat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/10 14:24:07 by eduprat           #+#    #+#             */
-/*   Updated: 2018/01/27 13:31:11 by eduprat          ###   ########.fr       */
+/*   Created: 2018/01/27 12:20:59 by eduprat           #+#    #+#             */
+/*   Updated: 2018/01/27 12:36:41 by eduprat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+char	ft_is_white_space(char x)
 {
-	write(fd, &c, 1);
+	if (x == ' ' || x == '\n' || x == '\t')
+		return (1);
+	else
+		return (0);
 }

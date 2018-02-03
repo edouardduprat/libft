@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eduprat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/10 14:24:07 by eduprat           #+#    #+#             */
-/*   Updated: 2018/01/27 13:31:11 by eduprat          ###   ########.fr       */
+/*   Created: 2018/01/24 10:41:32 by eduprat           #+#    #+#             */
+/*   Updated: 2018/01/24 10:44:29 by eduprat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	write(fd, &c, 1);
+	t_list	*tmp;
+	t_list	*n;
+
+	if (!lst)
+		return (NULL);
+	n = f(lst);
+	tmp = n;
+	while (lst->next)
+	{
+		lst = lst->next;
+		n->next = f(lst);
+		if (!(n->next))
+			return (NULL);
+		n = n->next;
+	}
+	return (tmp);
 }

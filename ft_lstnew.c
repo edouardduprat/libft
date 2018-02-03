@@ -1,18 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eduprat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/10 14:24:07 by eduprat           #+#    #+#             */
-/*   Updated: 2018/01/27 13:31:11 by eduprat          ###   ########.fr       */
+/*   Created: 2018/01/24 10:31:53 by eduprat           #+#    #+#             */
+/*   Updated: 2018/01/24 10:35:15 by eduprat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	write(fd, &c, 1);
+	t_list *tmp;
+
+	tmp = malloc(sizeof(t_list));
+	if (!tmp)
+		return (NULL);
+	if (!content)
+	{
+		tmp->content = NULL;
+		tmp->content_size = 0;
+	}
+	else
+	{
+		if (!(tmp->content = malloc(sizeof(content))))
+			free(tmp);
+		else
+			ft_memcpy(tmp->content, content, content_size);
+		tmp->content_size = content_size;
+		tmp->next = NULL;
+	}
+	return (tmp);
 }

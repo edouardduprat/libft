@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_addchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eduprat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/10 14:24:07 by eduprat           #+#    #+#             */
-/*   Updated: 2018/01/27 13:31:11 by eduprat          ###   ########.fr       */
+/*   Created: 2018/02/02 16:01:05 by eduprat           #+#    #+#             */
+/*   Updated: 2018/02/02 17:59:13 by eduprat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+char	*ft_addchar(char *src, char c)
 {
-	write(fd, &c, 1);
+	char	*new;
+	int		i;
+
+	i = 0;
+	while (src[i])
+		i++;
+	new = (char *)malloc(sizeof(new) * (i + 1 + 1));
+	i = 0;
+	while (src[i])
+	{
+		new[i] = src[i];
+		i++;
+	}
+	new[i++] = c;
+	new[i] = '\0';
+	return (new);
 }

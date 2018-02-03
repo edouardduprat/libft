@@ -6,7 +6,7 @@
 /*   By: eduprat <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 15:02:10 by eduprat           #+#    #+#             */
-/*   Updated: 2018/01/21 17:57:06 by eduprat          ###   ########.fr       */
+/*   Updated: 2018/01/27 12:04:14 by eduprat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static size_t	get_str_len(int n)
 	return (i);
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
 	char			*str;
 	size_t			str_len;
